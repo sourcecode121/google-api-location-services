@@ -4,4 +4,21 @@
     <string name="latitude">Latitude: %s</string>
     <string name="longitude">Longitude: %s</string>
     <string name="location_details">Location Details:</string>
+
+    <string name="activity_recognition">Activity Recognition</string>
+    <string name="request_activities">Request Updates</string>
+    <string name="remove_activities">Remove Updates</string>
+    <string name="recognized_activities">Recognized Activities</string>
+
+    <string name="in_vehicle">In vehicle</string>
+    <string name="on_bicycle">On bicycle</string>
+    <string name="on_foot">On foot</string>
+    <string name="running">Running</string>
+    <string name="still">Still</string>
+    <string name="tilting">Tilting</string>
+    <string name="unknown_activity">Unknown activity</string>
+    <string name="walking">Walking</string>
+    <string name="unidentifiable_activity">Unidentifiable activity</string>
+
+    <string name="not_connected">Not Connected. Try again</string>
 </resources>

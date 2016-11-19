@@ -1,6 +1,7 @@
 package com.example.location;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
@@ -10,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,17 +44,28 @@ public class MainActivity extends AppCompatActivity
 
         latitude = (TextView) findViewById(R.id.latitude_text_view);
         longitude = (TextView) findViewById(R.id.longitude_text_view);
+
+        findViewById(R.id.activity_recognition_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RecognitionActivity.class));
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         googleApiClient.connect();
+        Log.i(TAG, "onStart");
     }
 
     @Override
     protected void onStop() {
-        googleApiClient.disconnect();
+        if (googleApiClient.isConnected()) {
+            googleApiClient.disconnect();
+        }
+        Log.i(TAG, "onStop");
         super.onStop();
     }
 
@@ -83,7 +96,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.i(TAG, "Connection failed");
+        Log.i(TAG, "Connection failed. Error code " + connectionResult.getErrorCode());
     }
 
     @Override
