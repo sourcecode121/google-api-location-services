@@ -22,7 +22,13 @@
         <activity android:name=".RecognitionActivity"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".GeofenceActivity"
+            android:parentActivityName=".MainActivity"/>
+
         <service android:name=".DetectedActivitiesIntentService"
+            android:exported="false"/>
+
+        <service android:name=".GeofenceIntentService"
             android:exported="false"/>
 
         <meta-data android:name="com.google.android.gms.version"

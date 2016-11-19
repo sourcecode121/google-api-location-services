@@ -51,18 +51,27 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, RecognitionActivity.class));
             }
         });
+
+        findViewById(R.id.geofence_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, GeofenceActivity.class));
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        googleApiClient.connect();
+        if (!googleApiClient.isConnected() || !googleApiClient.isConnecting()) {
+            googleApiClient.connect();
+        }
         Log.i(TAG, "onStart");
     }
 
     @Override
     protected void onStop() {
-        if (googleApiClient.isConnected()) {
+        if (googleApiClient.isConnected() || googleApiClient.isConnecting()) {
             googleApiClient.disconnect();
         }
         Log.i(TAG, "onStop");
@@ -92,6 +101,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onConnectionSuspended(int i) {
         Log.i(TAG, "Connection suspended");
+        googleApiClient.connect();
     }
 
     @Override

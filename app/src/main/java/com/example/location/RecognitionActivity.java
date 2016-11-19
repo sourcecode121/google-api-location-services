@@ -103,13 +103,15 @@ public class RecognitionActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        googleApiClient.connect();
+        if (!googleApiClient.isConnected() || !googleApiClient.isConnecting()) {
+            googleApiClient.connect();
+        }
         Log.i(TAG, "onStart");
     }
 
     @Override
     protected void onStop() {
-        if (googleApiClient.isConnected()) {
+        if (googleApiClient.isConnected() || googleApiClient.isConnecting()) {
             googleApiClient.disconnect();
         }
         Log.i(TAG, "onStop");

@@ -21,4 +21,7 @@
     <string name="unidentifiable_activity">Unidentifiable activity</string>
 
     <string name="not_connected">Not Connected. Try again</string>
+
+    <string name="geofence">Geofence</string>
+    <string name="add_geofences">Add Geofences</string>
 </resources>
