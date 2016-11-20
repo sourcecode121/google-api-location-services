@@ -82,7 +82,7 @@ public class GeofenceIntentService extends IntentService {
     private void sendNotification(String notificationDetails) {
         Intent intent = new Intent(this, GeofenceActivity.class);
         TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(this);
-        taskStackBuilder.addParentStack(MainActivity.class);
+        taskStackBuilder.addParentStack(GeofenceActivity.class);
         taskStackBuilder.addNextIntent(intent);
         PendingIntent pendingIntent = taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
